@@ -7,6 +7,5 @@ func main() -> int {
     manual string msg = "Hello, world!";
     print(add(n, 7));
     print(msg);
-    free(msg);          // manual memory
     return 0;
 }

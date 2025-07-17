@@ -1,0 +1,13 @@
+func greet(string name) -> int {
+    manual string msg = "Hello, ";
+    manual string full = msg + name + "!";
+    print(full);
+    free(msg);
+    free(full);
+    return 0;
+}
+
+func main() -> int {
+    greet("World");
+    return 0;
+}
