@@ -135,4 +135,4 @@ malloc: Heap corruption detected, free list is damaged
 
 ## License
 
-Public Domain — free to use, modify, and redistribute.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) for details.
