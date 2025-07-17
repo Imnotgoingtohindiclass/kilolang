@@ -12,16 +12,19 @@ static bool isident(char c) {
 }
 
 // keyword lookup table, index is token enum
-static const char *keywords[] = {
-    [TOK_FUNC]   = "func",
-    [TOK_IF]     = "if",
-    [TOK_ELSE]   = "else",
-    [TOK_WHILE]  = "while",
-    [TOK_PRINT]  = "print",
-    [TOK_RETURN] = "return",
-    [TOK_INT]    = "int",
-    [TOK_STRING] = "string",
-    [TOK_MANUAL] = "manual",
+static const struct {
+    const char *word;
+    TokenKind  kind;
+} keywords[] = {
+    { "func",   TOK_FUNC },
+    { "if",     TOK_IF },
+    { "else",   TOK_ELSE },
+    { "while",  TOK_WHILE },
+    { "print",  TOK_PRINT },
+    { "return", TOK_RETURN },
+    { "int",    TOK_INT },
+    { "string", TOK_STRING },
+    { "manual", TOK_MANUAL },
 };
 
 // allocate and initalise lexer
@@ -43,9 +46,9 @@ static Token make_token(Lexer *l, TokenKind kind,
 
 // check if identifier matches a keyword
 static TokenKind ident_kind(const char *s, size_t len) {
-    for (int k = TOK_FUNC; k <= TOK_MANUAL; ++k)
-        if (keywords[k] && strncmp(s, keywords[k], len) == 0)
-            return k;
+    for (size_t i = 0; i < sizeof(keywords)/sizeof(keywords[0]); ++i)
+        if (strncmp(s, keywords[i].word, len) == 0 && strlen(keywords[i].word) == len)
+            return keywords[i].kind;
     return TOK_IDENT;
 }
 
