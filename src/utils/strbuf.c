@@ -1,13 +1,17 @@
 #include "strbuf.h"
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 // init empty buffer
 // maybe reserve small cap by default to avoid early realloc
-void strbuf_init(StrBuf *sb) { sb->p = NULL; sb->len = sb->cap = 0; }
+void strbuf_init(StrBuf *sb) {
+    sb->p = NULL;
+    sb->len = sb->cap = 0;
+}
 
 // append string to buffer
-// realloc policy can lead to waste; consider exact fit or amortized growth
+// realloc policy can lead to waste; consider exact fit or amortised growth
 void strbuf_append(StrBuf *sb, const char *s) {
     size_t n = strlen(s);
     if (sb->len + n + 1 > sb->cap) {
@@ -21,4 +25,6 @@ void strbuf_append(StrBuf *sb, const char *s) {
 
 // get c-string view
 // returns empty string if buffer not initialized
-const char *strbuf_cstr(StrBuf *sb) { return sb->p ? sb->p : ""; }
+const char *strbuf_cstr(StrBuf *sb) {
+    return sb->p ? sb->p : "";
+}
