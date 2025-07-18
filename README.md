@@ -16,7 +16,7 @@ KiloLang is a hand-written, single-pass compiler for a miniature, statically-typ
 | Semantic Checker          | ✅                      |
 | C Code Generator          | ✅                      |
 | Mark & Sweep GC           | ✅                      |
-| Manual Memory Opt-Out     | ✅ (`manual` keyword)   |
+| Manual Memory Opt-Out     | ⚠️ (`manual` keyword)   |
 | Arrays / Structs / Floats | ❌ (planned extensions) |
 
 ---
