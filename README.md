@@ -88,28 +88,6 @@ func main() -> int {
 | Operators | `+ - * / == != < <= > >=`                                                         |
 | Functions | No overloading, single return value only                                          |
 
----
-
-## Heap Corruption Debug Log
-
-### Error Message
-
-```
-malloc: Heap corruption detected, free list is damaged
-```
-
-### Root Cause
-
-`make_tok()` returned a token by value, but the `text` field was initialized with a reference to already-advanced `l->start`, which had been freed or reallocated. This caused `StrBuf` to reference stale memory, resulting in double-free or use-after-free.
-
-### Fix
-
-* `lexer_next()` now returns tokens with a copy of the lexeme.
-* `StrBuf` initialized once per token.
-* No aliasing of internal lexer buffers anymore.
-
----
-
 ## Planned Extensions
 
 | Feature   | Strategy                                                          |
