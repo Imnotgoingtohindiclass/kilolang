@@ -90,18 +90,6 @@ func main() -> int {
 
 ---
 
-## Known Issues and Fixes
-
-| Date       | Issue                         | Cause                            | Fix                                      |
-| ---------- | ----------------------------- | -------------------------------- | ---------------------------------------- |
-| 2024-07-17 | `strcmp` undefined            | Missing `<string.h>`             | Added to `main.c`                        |
-| 2024-07-17 | `malloc`, `realloc` undefined | Missing `<stdlib.h>`             | Added to `lexer.c`, `sema.c`, `parser.c` |
-| 2024-07-17 | Duplicate `case '-'` in lexer | Redundant lexer cases            | Merged the blocks                        |
-| 2024-07-17 | `bool` undefined              | Missing `<stdbool.h>`            | Added to `lexer.c`                       |
-| 2024-07-17 | Heap corruption error         | `make_tok()` reused freed memory | Lexer restructured                       |
-
----
-
 ## Heap Corruption Debug Log
 
 ### Error Message
